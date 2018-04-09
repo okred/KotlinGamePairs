@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">KotlinGamePairs</string>
+
+    <string name="list_name">Name</string>
+    <string name="list_attempts">Attempts</string>
+    <string name="list_rating">Rating</string>
+    <string name="title_name">NAME</string>
+    <string name="title_attempts">ATTEMPTS</string>
+    <string name="title_rating">RATING</string>
+    <string name="title_leaderboard">LEADERBOARD</string>
+    <string name="dialog_attempts">Attempts (#)</string>
+    <string name="dialog_rating">X</string>
+    <string name="dialog_leaderboard">LEADERBOARD</string>
+    <string name="dialog_message">Enter Name and record score:</string>
+
+
+</resources>
