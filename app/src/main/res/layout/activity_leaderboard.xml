@@ -1,121 +1,80 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/background"
-    tools:layout_editor_absoluteY="25dp">
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/left_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/right_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".9" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/top_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".2" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/bottom_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".95" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/top_title_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".1" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/very_top_title_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".1" />
-
-    <TextView
-        android:id="@+id/textViewLeaderboard"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:fontFamily="@font/belgrano"
-        android:gravity="center|bottom"
-        android:text="@string/title_leaderboard"
-        android:textColor="@color/colorWhite"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/top_title_guideline"
-        app:layout_constraintLeft_toLeftOf="@+id/left_guideline"
-        app:layout_constraintRight_toRightOf="@+id/right_guideline"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_weight="2">
 
-    <TextView
-        android:id="@+id/textViewTitleRating"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/belgrano"
-        android:gravity="center"
-        android:text="@string/title_rating"
-        android:textColor="@android:color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/top_guideline"
-        app:layout_constraintLeft_toLeftOf="@id/left_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/textViewTitleName"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintTop_toTopOf="@+id/top_title_guideline" />
+        <TextView
+            android:id="@+id/textViewLeaderboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/belgrano"
+            android:gravity="center"
+            android:textColor="@color/colorWhite"
+            android:text="@string/title_leaderboard"
+            android:textSize="40sp" />
 
-    <TextView
-        android:id="@+id/textViewTitleName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/belgrano"
-        android:gravity="center"
-        android:text="@string/title_name"
-        android:textColor="@android:color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/top_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/textViewTitleAttempts"
-        app:layout_constraintStart_toEndOf="@+id/textViewTitleRating"
-        app:layout_constraintTop_toTopOf="@+id/top_title_guideline" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewTitleAttempts"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/belgrano"
-        android:gravity="center"
-        android:text="@string/title_attempts"
-        android:textColor="@android:color/white"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/top_guideline"
-        app:layout_constraintRight_toRightOf="@id/right_guideline"
-        app:layout_constraintStart_toEndOf="@+id/textViewTitleName"
-        app:layout_constraintTop_toTopOf="@+id/top_title_guideline"
-        app:layout_constraintVertical_bias="0.472" />
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewTitleRating"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:fontFamily="@font/belgrano"
+            android:gravity="center"
+            android:text="@string/title_rating"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/textViewTitleName"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:fontFamily="@font/belgrano"
+            android:gravity="center"
+            android:text="@string/title_name"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/textViewTitleAttempts"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:fontFamily="@font/belgrano"
+            android:gravity="center"
+            android:text="@string/title_attempts"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+    </LinearLayout>
 
     <fragment
         android:id="@+id/fragment2"
         android:name="com.go.kotlingamepairs.FragmentListLeaderboard"
-        android:layout_width="0dp"
+        android:layout_width="300dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
-        app:layout_constraintLeft_toLeftOf="@+id/left_guideline"
-        app:layout_constraintRight_toRightOf="@+id/right_guideline"
-        app:layout_constraintTop_toTopOf="@+id/top_guideline" />
+        android:layout_weight="8"/>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
-
+</LinearLayout>
