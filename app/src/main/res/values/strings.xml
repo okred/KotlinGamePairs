@@ -11,7 +11,8 @@
     <string name="dialog_attempts">Attempts (#)</string>
     <string name="dialog_rating">X</string>
     <string name="dialog_leaderboard">LEADERBOARD</string>
-    <string name="dialog_message">Enter Name and record score:</string>
+    <string name="dialog_message">Record Score?</string>
+    <string name="enter_name">Enter Name here</string>
 
 
 </resources>

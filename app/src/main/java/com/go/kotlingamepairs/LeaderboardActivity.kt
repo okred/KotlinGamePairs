@@ -1,14 +1,14 @@
 package com.go.kotlingamepairs
+import android.app.Dialog
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Window
 import android.widget.EditText
 import android.widget.TextView
 
-import kotlinx.android.synthetic.main.dialog_inputscore.*
-import kotlinx.android.synthetic.main.listview_row.*
 class LeaderboardActivity : AppCompatActivity() {
 
     internal var time: TextView? = null
@@ -23,40 +23,55 @@ class LeaderboardActivity : AppCompatActivity() {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.activity_leaderboard)
 
+        //LOAD music
         soundBackgroundLeaderboard = MediaPlayer.create(this, R.raw.backgroundmusicleaderboard)
         soundBackgroundLeaderboard.start()
         soundBackgroundLeaderboard.isLooping
-        //get the values from intent
+
+        //GET values from intent
         val intent = intent
         attemptsValue = intent.getIntExtra("attemptNum", -1)
+        evaluateRating()
 
-        //set up dialog on Launch
+        //CONFIG dialog on Launch
         val inflater = layoutInflater
         val alertLayout = inflater.inflate(R.layout.dialog_inputscore, null)
         val alert = AlertDialog.Builder(this@LeaderboardActivity)
-        alert.setTitle("Your Results")
-        // this is set the view from XML inside AlertDialog
-        alert.setView(alertLayout)
-        // time = alertLayout.findViewById(R.id.textViewTimeValue); //potentially further develop for time
-//        rating = alertLayout.findViewById(R.id.textViewRatingValue)
-        val inputName = alertLayout.findViewById<EditText>(R.id.editTextName)
-        val numberAttempts = alertLayout.findViewById<TextView>(R.id.textViewAttemptsValue)
 
+       // alert.setTitle("Your Results")
+        alert.setView(alertLayout)
+
+        //potentially further develop for time
+        // val time = alertLayout.findViewById(R.id.textViewTimeValue);
+        val rating = alertLayout.findViewById<TextView>(R.id.textViewRatingValue)
+        val numberAttempts = alertLayout.findViewById<TextView>(R.id.textViewAttemptsValue)
+        val inputName = alertLayout.findViewById<EditText>(R.id.editTextName)
+        rating.text = ratingValue
+        numberAttempts.text = String.format("%03d", attemptsValue)
+
+        //CONFIG buttons
         alert.setCancelable(true)
         alert.setNegativeButton("NO") { _, _ ->
             testSetPositionList(0)
         }
-
         alert.setPositiveButton("SAVE") { _, _  ->
             nameCustom = inputName.text.toString()
             testSetPositionList(0)
         }
-        numberAttempts.text = String.format("%03d", attemptsValue)
         val dialog = alert.create()
         dialog.show()
-        evaluateRating()
     }
 
+//    private fun showAlertDialog(attemptsValue : Int) {
+//        Log.d("LeaderboardaActivity", "showAlertDialog()")
+//        val fm = supportFragmentManager
+//        val alertDialog = NameInputDialogFragment.newInstance(-1)
+//        val bundle = Bundle()
+//        bundle.putInt("attemptsValue", attemptsValue)
+//        alertDialog.arguments = bundle
+//        alertDialog.show(fm, "fragment_alert")
+//
+//    }
     private fun evaluateRating() {
         //Top score - 26 Perfect, no mistakes
         ratingValue = when(attemptsValue){
