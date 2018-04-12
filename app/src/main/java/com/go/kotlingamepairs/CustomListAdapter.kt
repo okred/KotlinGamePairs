@@ -14,31 +14,51 @@ class CustomListAdapter(private val context: Activity, private val nameArray: Ar
         val rowView = inflater.inflate(R.layout.listview_row, null, true)
 
         //this code gets references to objects in the listview_row.xml file
-        val nameTextField = rowView.findViewById<View>(R.id.textViewNameValueListView) as TextView
-        val attemptsTextField = rowView.findViewById<View>(R.id.textViewAttemptsValueListView) as TextView
-        val timeTextField = rowView.findViewById<View>(R.id.textViewAttemptsValueListView) as TextView
+        var ratingTextView = rowView.findViewById<View>(R.id.textViewRatingValueListView) as TextView
+        val nameTextView = rowView.findViewById<View>(R.id.textViewNameValueListView) as TextView
+        val attemptsTextView = rowView.findViewById<View>(R.id.textViewAttemptsValueListView) as TextView
+//        val timeTextField = rowView.findViewById<View>(R.id.textViewTimeValueListView) as TextView
 
         //this code sets the values of the objects to values from the arrays
-        nameTextField.text = nameArray[position]
-        attemptsTextField.text = String.format("%03d", attemptsArray[position])
-        timeTextField.text = String.format("%03d", timeArray[position])
+        nameTextView.text = nameArray[position]
+        attemptsTextView.text = String.format("%03d", attemptsArray[position])
+//        timeTextField.text = String.format("%03d", timeArray[position])
 
         when(attemptsArray[position]){
-            in 1..50 ->  //ratingValue = "S"
-            nameTextField.setTextColor(Color.WHITE)
-            in 50..55 -> // ratingValue = "A"
-            nameTextField.setTextColor(Color.GREEN)
-            in 55..61 -> //ratingValue = "B"
-            nameTextField.setTextColor(Color.YELLOW)
-            in 61..69 -> //ratingValue = "C"
-            nameTextField.setTextColor(Color.parseColor("#FFA500"))
-            in 69..79 -> //ratingValue = "D"
-            nameTextField.setTextColor(Color.RED)
-            in 79..89 -> //ratingValue = "E"
-            nameTextField.setTextColor(Color.parseColor("#A52A2A"))
-            else  ->     //ratingValue = "F"
-            nameTextField.setTextColor(Color.BLACK)
+            in 1..50 ->  ratingTextView.text = "S"
+            in 50..55 -> ratingTextView.text = "A"
+            in 55..61 -> ratingTextView.text = "B"
+            in 61..69 -> ratingTextView.text = "C"
+            in 69..79 -> ratingTextView.text = "D"
+            in 79..89 -> ratingTextView.text = "E"
+            else  -> {
+                ratingTextView.text = "F"
+                ratingTextView.setTextColor(Color.BLACK)
+            }
+
         }
+
+        //TODO - put this into one when statement - avoid error "Type Inference failed"
+        when(attemptsArray[position]){
+            in 0..50 ->
+            ratingTextView.setTextColor(Color.WHITE)
+            in 51..55 ->
+            ratingTextView.setTextColor(Color.GREEN)
+            in 56..61 ->
+            ratingTextView.setTextColor(Color.YELLOW)
+            in 62..69 ->
+            ratingTextView.setTextColor(Color.parseColor("#FFA500"))
+            in 70..79 ->
+            ratingTextView.setTextColor(Color.RED)
+            in 80..89 ->
+            ratingTextView.setTextColor(Color.parseColor("#A52A2A"))
+            else  -> {
+                ratingTextView.setTextColor(Color.BLACK)
+            }
+
+        }
+
+
 
         return rowView
     }
