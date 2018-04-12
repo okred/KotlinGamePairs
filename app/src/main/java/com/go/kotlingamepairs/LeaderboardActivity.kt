@@ -8,6 +8,9 @@ import android.util.Log
 import android.view.Window
 import android.widget.EditText
 import android.widget.TextView
+import android.content.Intent
+
+
 
 class LeaderboardActivity : AppCompatActivity() {
 
@@ -17,6 +20,12 @@ class LeaderboardActivity : AppCompatActivity() {
     private var ratingValue = "X"
 
     private lateinit var soundBackgroundLeaderboard: MediaPlayer
+
+    override fun onBackPressed() {
+        soundBackgroundLeaderboard.stop()
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

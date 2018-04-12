@@ -72,6 +72,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun setListeners(){
 
+        //ROW 0
         imageButtonr0c0.setOnClickListener(this)
         imageButtonr0c1.setOnClickListener(this)
         imageButtonr0c2.setOnClickListener(this)
@@ -79,7 +80,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         imageButtonr0c4.setOnClickListener(this)
         imageButtonr0c5.setOnClickListener(this)
         imageButtonr0c6.setOnClickListener(this)
-
+        //ROW 1
         imageButtonr1c0.setOnClickListener(this)
         imageButtonr1c1.setOnClickListener(this)
         imageButtonr1c2.setOnClickListener(this)
@@ -87,7 +88,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         imageButtonr1c4.setOnClickListener(this)
         imageButtonr1c5.setOnClickListener(this)
         imageButtonr1c6.setOnClickListener(this)
-
+        //ROW 2
         imageButtonr2c0.setOnClickListener(this)
         imageButtonr2c1.setOnClickListener(this)
         imageButtonr2c2.setOnClickListener(this)
@@ -95,7 +96,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         imageButtonr2c4.setOnClickListener(this)
         imageButtonr2c5.setOnClickListener(this)
         imageButtonr2c6.setOnClickListener(this)
-
+        //ROW 3
         imageButtonr3c0.setOnClickListener(this)
         imageButtonr3c1.setOnClickListener(this)
         imageButtonr3c2.setOnClickListener(this)
@@ -103,7 +104,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         imageButtonr3c4.setOnClickListener(this)
         imageButtonr3c5.setOnClickListener(this)
         imageButtonr3c6.setOnClickListener(this)
-
+        //ROW 4
         imageButtonr4c0.setOnClickListener(this)
         imageButtonr4c1.setOnClickListener(this)
         imageButtonr4c2.setOnClickListener(this)
@@ -111,7 +112,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         imageButtonr4c4.setOnClickListener(this)
         imageButtonr4c5.setOnClickListener(this)
         imageButtonr4c6.setOnClickListener(this)
-
+        //ROW 5
         imageButtonr5c0.setOnClickListener(this)
         imageButtonr5c1.setOnClickListener(this)
         imageButtonr5c2.setOnClickListener(this)
@@ -119,7 +120,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         imageButtonr5c4.setOnClickListener(this)
         imageButtonr5c5.setOnClickListener(this)
         imageButtonr5c6.setOnClickListener(this)
-
+        //ROW 6
         imageButtonr6c0.setOnClickListener(this)
         imageButtonr6c1.setOnClickListener(this)
         imageButtonr6c2.setOnClickListener(this)
@@ -127,7 +128,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         imageButtonr6c4.setOnClickListener(this)
         imageButtonr6c5.setOnClickListener(this)
         imageButtonr6c6.setOnClickListener(this)
-
+        //ROW 7
         imageButtonr7c0.setOnClickListener(this)
         imageButtonr7c1.setOnClickListener(this)
         imageButtonr7c2.setOnClickListener(this)
@@ -1542,9 +1543,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         val intent = Intent(this@MainActivity, LeaderboardActivity::class.java)
                         intent.putExtra("attemptNum", attemptCount)
                         startActivity(intent)
+                        finish()
 
                     }
-                }, 2000)
+                }, 1500)
                 Toast.makeText(this, "Pair", Toast.LENGTH_SHORT).show()
             }
             else -> Toast.makeText(this, "delay not work", Toast.LENGTH_SHORT).show()
