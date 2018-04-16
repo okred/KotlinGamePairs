@@ -1,16 +1,13 @@
 package com.go.kotlingamepairs
-import android.app.Dialog
+
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.Window
 import android.widget.EditText
 import android.widget.TextView
 import android.content.Intent
-
-
 
 class LeaderboardActivity : AppCompatActivity() {
 
@@ -33,25 +30,24 @@ class LeaderboardActivity : AppCompatActivity() {
         setContentView(R.layout.activity_leaderboard)
 
         //LOAD music
-        soundBackgroundLeaderboard = MediaPlayer.create(this, R.raw.backgroundmusicleaderboard)
+        soundBackgroundLeaderboard = MediaPlayer.create(this, R.raw.music_background_leaderboard)
         soundBackgroundLeaderboard.start()
         soundBackgroundLeaderboard.isLooping
 
         //GET values from intent
         val intent = intent
-        attemptsValue = intent.getIntExtra("attemptNum", -1)
+        attemptsValue = intent.getIntExtra("EXTRA_attemptCount", -1)
         evaluateRating()
 
         //CONFIG dialog on Launch
         val inflater = layoutInflater
-        val alertLayout = inflater.inflate(R.layout.dialog_inputscore, null)
+        val alertLayout = inflater.inflate(R.layout.dialog_leaderboard_inputscore, null)
         val alert = AlertDialog.Builder(this@LeaderboardActivity)
 
        // alert.setTitle("Your Results")
         alert.setView(alertLayout)
 
         //potentially further develop for time
-        // val time = alertLayout.findViewById(R.id.textViewTimeValue);
         val rating = alertLayout.findViewById<TextView>(R.id.textViewRatingValue)
         val numberAttempts = alertLayout.findViewById<TextView>(R.id.textViewAttemptsValue)
         val inputName = alertLayout.findViewById<EditText>(R.id.editTextName)
@@ -96,7 +92,7 @@ class LeaderboardActivity : AppCompatActivity() {
 
     fun testSetPositionList(position: Int) {
 
-        val fragmentListLeaderboard = fragmentManager.findFragmentById(R.id.fragment2) as FragmentListLeaderboard
+        val fragmentListLeaderboard = fragmentManager.findFragmentById(R.id.fragment_listview) as LeaderboardListFragment
         fragmentListLeaderboard.listView.smoothScrollToPositionFromTop(position, 0)
     }
 

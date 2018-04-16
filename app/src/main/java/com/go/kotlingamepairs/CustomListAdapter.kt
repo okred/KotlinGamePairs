@@ -7,58 +7,54 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 
+import kotlinx.android.synthetic.main.listview_row_leaderboard.*
+
 class CustomListAdapter(private val context: Activity, private val nameArray: Array<String>,
-                        private val attemptsArray: Array<Int>, private val timeArray: Array<Int>) : ArrayAdapter<Any>(context, R.layout.listview_row, nameArray) {
+                        private val attemptsArray: Array<Int>) : ArrayAdapter<Any>(context, R.layout.listview_row_leaderboard, nameArray) {
     override fun getView(position: Int, view: View?, parent: ViewGroup): View {
         val inflater = context.layoutInflater
-        val rowView = inflater.inflate(R.layout.listview_row, null, true)
+        val rowView = inflater.inflate(R.layout.listview_row_leaderboard, null, true)
 
-        //this code gets references to objects in the listview_row.xml file
-        var ratingTextView = rowView.findViewById<View>(R.id.textViewRatingValueListView) as TextView
-        val nameTextView = rowView.findViewById<View>(R.id.textViewNameValueListView) as TextView
-        val attemptsTextView = rowView.findViewById<View>(R.id.textViewAttemptsValueListView) as TextView
-//        val timeTextField = rowView.findViewById<View>(R.id.textViewTimeValueListView) as TextView
+        //GET references to objects in listview_row_leaderboard.xml
+        var tvRating = rowView.findViewById<View>(R.id.text_listview_rating_value) as TextView
+        val tvName = rowView.findViewById<View>(R.id.text_listview_name_value) as TextView
+        val tvAttempts = rowView.findViewById<View>(R.id.text_listview_attempts_value) as TextView
 
         //this code sets the values of the objects to values from the arrays
-        nameTextView.text = nameArray[position]
-        attemptsTextView.text = String.format("%03d", attemptsArray[position])
-//        timeTextField.text = String.format("%03d", timeArray[position])
+        tvName.text = nameArray[position]
+        tvAttempts.text = String.format("%03d", attemptsArray[position])
 
         when(attemptsArray[position]){
-            in 1..50 ->  ratingTextView.text = "S"
-            in 50..55 -> ratingTextView.text = "A"
-            in 55..61 -> ratingTextView.text = "B"
-            in 61..69 -> ratingTextView.text = "C"
-            in 69..79 -> ratingTextView.text = "D"
-            in 79..89 -> ratingTextView.text = "E"
+            in 1..50 ->  tvRating.text = "S"
+            in 50..55 -> tvRating.text = "A"
+            in 55..61 -> tvRating.text = "B"
+            in 61..69 -> tvRating.text = "C"
+            in 69..79 -> tvRating.text = "D"
+            in 79..89 -> tvRating.text = "E"
             else  -> {
-                ratingTextView.text = "F"
-                ratingTextView.setTextColor(Color.BLACK)
+                tvRating.text = "F"
+                tvRating.setTextColor(Color.BLACK)
             }
-
         }
 
-        //TODO - put this into one when statement - avoid error "Type Inference failed"
+        //TODO - put two when statements into one - avoid error "Type Inference failed"
         when(attemptsArray[position]){
             in 0..50 ->
-            ratingTextView.setTextColor(Color.WHITE)
+            tvRating.setTextColor(Color.WHITE)
             in 51..55 ->
-            ratingTextView.setTextColor(Color.GREEN)
+            tvRating.setTextColor(Color.GREEN)
             in 56..61 ->
-            ratingTextView.setTextColor(Color.YELLOW)
+            tvRating.setTextColor(Color.YELLOW)
             in 62..69 ->
-            ratingTextView.setTextColor(Color.parseColor("#FFA500"))
+            tvRating.setTextColor(Color.parseColor("#FFA500"))
             in 70..79 ->
-            ratingTextView.setTextColor(Color.RED)
+            tvRating.setTextColor(Color.RED)
             in 80..89 ->
-            ratingTextView.setTextColor(Color.parseColor("#A52A2A"))
+            tvRating.setTextColor(Color.parseColor("#A52A2A"))
             else  -> {
-                ratingTextView.setTextColor(Color.BLACK)
+                tvRating.setTextColor(Color.BLACK)
             }
-
         }
-
-
 
         return rowView
     }

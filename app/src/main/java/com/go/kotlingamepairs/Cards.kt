@@ -5,7 +5,7 @@ import android.util.Log
 
 import java.util.concurrent.ThreadLocalRandom
 
-class CardsDeck(private var ctx: Context) {
+class Cards(private var ctx: Context) {
 
     var deckIdArray = IntArray(52)
         internal set
@@ -17,7 +17,7 @@ class CardsDeck(private var ctx: Context) {
         //Fill the deck with 52 cards
         for (i in 0..51) {
 
-            id = ctx.resources.getIdentifier("com.go.kotlingamepairs:drawable/card" + Integer.toString(i), null, null)
+            id = ctx.resources.getIdentifier("com.go.kotlingamepairs:drawable/ic_card" + Integer.toString(i), null, null)
             deckIdArray[i] = id
             Log.d("DECKID", "DeckIDID: " + Integer.toString(id))
         }

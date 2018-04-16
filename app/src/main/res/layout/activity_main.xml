@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background">
+    android:background="@drawable/img_bkgd_yellowstone">
 
     <!--SPACE-->
     <LinearLayout
@@ -35,18 +35,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr0c0"
+                android:id="@+id/image_r0c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr0c0"
+                android:id="@+id/imagebutton_r0c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -63,18 +63,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr0c1"
+                android:id="@+id/image_r0c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr0c1"
+                android:id="@+id/imagebutton_r0c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -91,18 +91,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr0c2"
+                android:id="@+id/image_r0c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr0c2"
+                android:id="@+id/imagebutton_r0c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -119,18 +119,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr0c3"
+                android:id="@+id/image_r0c3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr0c3"
+                android:id="@+id/imagebutton_r0c3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -147,18 +147,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr0c4"
+                android:id="@+id/image_r0c4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr0c4"
+                android:id="@+id/imagebutton_r0c4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -175,18 +175,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr0c5"
+                android:id="@+id/image_r0c5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr0c5"
+                android:id="@+id/imagebutton_r0c5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -203,18 +203,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr0c6"
+                android:id="@+id/image_r0c6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr0c6"
+                android:id="@+id/imagebutton_r0c6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -253,18 +253,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr1c0"
+                android:id="@+id/image_r1c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr1c0"
+                android:id="@+id/imagebutton_r1c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -281,18 +281,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr1c1"
+                android:id="@+id/image_r1c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr1c1"
+                android:id="@+id/imagebutton_r1c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -309,18 +309,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr1c2"
+                android:id="@+id/image_r1c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr1c2"
+                android:id="@+id/imagebutton_r1c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -337,18 +337,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr1c3"
+                android:id="@+id/image_r1c3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr1c3"
+                android:id="@+id/imagebutton_r1c3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -365,18 +365,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr1c4"
+                android:id="@+id/image_r1c4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr1c4"
+                android:id="@+id/imagebutton_r1c4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -393,18 +393,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr1c5"
+                android:id="@+id/image_r1c5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr1c5"
+                android:id="@+id/imagebutton_r1c5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -421,18 +421,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr1c6"
+                android:id="@+id/image_r1c6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr1c6"
+                android:id="@+id/imagebutton_r1c6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -471,18 +471,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr2c0"
+                android:id="@+id/image_r2c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr2c0"
+                android:id="@+id/imagebutton_r2c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -499,18 +499,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr2c1"
+                android:id="@+id/image_r2c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr2c1"
+                android:id="@+id/imagebutton_r2c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -527,18 +527,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr2c2"
+                android:id="@+id/image_r2c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr2c2"
+                android:id="@+id/imagebutton_r2c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -555,18 +555,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr2c3"
+                android:id="@+id/image_r2c3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr2c3"
+                android:id="@+id/imagebutton_r2c3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -583,18 +583,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr2c4"
+                android:id="@+id/image_r2c4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr2c4"
+                android:id="@+id/imagebutton_r2c4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -611,18 +611,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr2c5"
+                android:id="@+id/image_r2c5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr2c5"
+                android:id="@+id/imagebutton_r2c5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -639,18 +639,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr2c6"
+                android:id="@+id/image_r2c6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr2c6"
+                android:id="@+id/imagebutton_r2c6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -689,18 +689,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr3c0"
+                android:id="@+id/image_r3c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr3c0"
+                android:id="@+id/imagebutton_r3c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -717,18 +717,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr3c1"
+                android:id="@+id/image_r3c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr3c1"
+                android:id="@+id/imagebutton_r3c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -745,18 +745,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr3c2"
+                android:id="@+id/image_r3c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr3c2"
+                android:id="@+id/imagebutton_r3c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -773,18 +773,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr3c3"
+                android:id="@+id/image_r3c3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr3c3"
+                android:id="@+id/imagebutton_r3c3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -801,18 +801,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr3c4"
+                android:id="@+id/image_r3c4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr3c4"
+                android:id="@+id/imagebutton_r3c4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -829,18 +829,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr3c5"
+                android:id="@+id/image_r3c5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr3c5"
+                android:id="@+id/imagebutton_r3c5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -857,18 +857,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr3c6"
+                android:id="@+id/image_r3c6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr3c6"
+                android:id="@+id/imagebutton_r3c6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -907,18 +907,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr4c0"
+                android:id="@+id/image_r4c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr4c0"
+                android:id="@+id/imagebutton_r4c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -935,18 +935,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr4c1"
+                android:id="@+id/image_r4c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr4c1"
+                android:id="@+id/imagebutton_r4c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -963,18 +963,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr4c2"
+                android:id="@+id/image_r4c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr4c2"
+                android:id="@+id/imagebutton_r4c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -991,18 +991,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr4c3"
+                android:id="@+id/image_r4c3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr4c3"
+                android:id="@+id/imagebutton_r4c3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1019,18 +1019,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr4c4"
+                android:id="@+id/image_r4c4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr4c4"
+                android:id="@+id/imagebutton_r4c4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1047,18 +1047,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr4c5"
+                android:id="@+id/image_r4c5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr4c5"
+                android:id="@+id/imagebutton_r4c5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1075,18 +1075,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr4c6"
+                android:id="@+id/image_r4c6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr4c6"
+                android:id="@+id/imagebutton_r4c6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1125,18 +1125,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr5c0"
+                android:id="@+id/image_r5c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr5c0"
+                android:id="@+id/imagebutton_r5c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1153,18 +1153,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr5c1"
+                android:id="@+id/image_r5c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr5c1"
+                android:id="@+id/imagebutton_r5c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1181,18 +1181,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr5c2"
+                android:id="@+id/image_r5c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr5c2"
+                android:id="@+id/imagebutton_r5c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1209,18 +1209,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr5c3"
+                android:id="@+id/image_r5c3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr5c3"
+                android:id="@+id/imagebutton_r5c3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1237,18 +1237,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr5c4"
+                android:id="@+id/image_r5c4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr5c4"
+                android:id="@+id/imagebutton_r5c4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1265,18 +1265,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr5c5"
+                android:id="@+id/image_r5c5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr5c5"
+                android:id="@+id/imagebutton_r5c5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1293,18 +1293,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr5c6"
+                android:id="@+id/image_r5c6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr5c6"
+                android:id="@+id/imagebutton_r5c6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1343,18 +1343,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr6c0"
+                android:id="@+id/image_r6c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr6c0"
+                android:id="@+id/imagebutton_r6c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1371,18 +1371,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr6c1"
+                android:id="@+id/image_r6c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr6c1"
+                android:id="@+id/imagebutton_r6c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1399,18 +1399,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr6c2"
+                android:id="@+id/image_r6c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr6c2"
+                android:id="@+id/imagebutton_r6c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1427,18 +1427,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr6c3"
+                android:id="@+id/image_r6c3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr6c3"
+                android:id="@+id/imagebutton_r6c3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1455,18 +1455,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr6c4"
+                android:id="@+id/image_r6c4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr6c4"
+                android:id="@+id/imagebutton_r6c4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1483,18 +1483,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr6c5"
+                android:id="@+id/image_r6c5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr6c5"
+                android:id="@+id/imagebutton_r6c5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1511,18 +1511,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr6c6"
+                android:id="@+id/image_r6c6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr6c6"
+                android:id="@+id/imagebutton_r6c6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1561,18 +1561,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr7c0"
+                android:id="@+id/image_r7c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr7c0"
+                android:id="@+id/imagebutton_r7c0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1589,18 +1589,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr7c1"
+                android:id="@+id/image_r7c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr7c1"
+                android:id="@+id/imagebutton_r7c1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->
@@ -1617,18 +1617,18 @@
             android:layout_weight="@dimen/card_row_width">
 
             <ImageView
-                android:id="@+id/imageViewr7c2"
+                android:id="@+id/image_r7c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/card0" />
+                app:srcCompat="@drawable/ic_card0" />
 
             <ImageButton
-                android:id="@+id/imageButtonr7c2"
+                android:id="@+id/imagebutton_r7c2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#0000"
-                app:srcCompat="@drawable/cardback" />
+                app:srcCompat="@drawable/btn_cardback" />
         </RelativeLayout>
 
         <!--SPACE-->

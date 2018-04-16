@@ -6,7 +6,7 @@
     android:minHeight="?android:attr/listPreferredItemHeight">
 
     <TextView
-        android:id="@+id/textViewRatingValueListView"
+        android:id="@+id/text_listview_rating_value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -18,10 +18,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textViewNameValueListView"/>
+        app:layout_constraintEnd_toStartOf="@+id/text_listview_name_value"/>
 
     <TextView
-        android:id="@+id/textViewNameValueListView"
+        android:id="@+id/text_listview_name_value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -32,11 +32,11 @@
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewRatingValueListView"
-        app:layout_constraintEnd_toStartOf="@+id/textViewAttemptsValueListView" />
+        app:layout_constraintStart_toEndOf="@+id/text_listview_rating_value"
+        app:layout_constraintEnd_toStartOf="@+id/text_listview_attempts_value" />
 
     <TextView
-        android:id="@+id/textViewAttemptsValueListView"
+        android:id="@+id/text_listview_attempts_value"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -47,7 +47,7 @@
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewNameValueListView"
+        app:layout_constraintStart_toEndOf="@+id/text_listview_name_value"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
