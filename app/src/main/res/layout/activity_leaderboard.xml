@@ -104,7 +104,7 @@
         app:layout_constraintVertical_bias="0.472" />
 
     <fragment
-        android:id="@+id/fragment_list"
+        android:id="@+id/fragment_listview"
         android:name="com.go.kotlingamepairs.LeaderboardListFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"

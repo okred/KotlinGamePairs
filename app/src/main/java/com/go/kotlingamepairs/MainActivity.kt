@@ -72,6 +72,67 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View) {
 
+        var location:Int = when (view){
+
+            imagebutton_r0c0 -> 0
+            imagebutton_r0c1 -> 1
+            imagebutton_r0c2 -> 2
+            imagebutton_r0c3 -> 3
+            imagebutton_r0c4 -> 4
+            imagebutton_r0c5 -> 5
+            imagebutton_r0c6 -> 6
+            imagebutton_r1c0 -> 7
+            imagebutton_r1c1 -> 8
+            imagebutton_r1c2 -> 9
+            imagebutton_r1c3 -> 10
+            imagebutton_r1c4 -> 11
+            imagebutton_r1c5 -> 12
+            imagebutton_r1c6 -> 13
+            imagebutton_r2c0 -> 14
+            imagebutton_r2c1 -> 15
+            imagebutton_r2c2 -> 16
+            imagebutton_r2c3 -> 17
+            imagebutton_r2c4 -> 18
+            imagebutton_r2c5 -> 19
+            imagebutton_r2c6 -> 20
+            imagebutton_r3c0 -> 21
+            imagebutton_r3c1 -> 22
+            imagebutton_r3c2 -> 23
+            imagebutton_r3c3 -> 24
+            imagebutton_r3c4 -> 25
+            imagebutton_r3c5 -> 26
+            imagebutton_r3c6 -> 27
+            imagebutton_r4c0 -> 28
+            imagebutton_r4c1 -> 29
+            imagebutton_r4c2 -> 30
+            imagebutton_r4c3 -> 31
+            imagebutton_r4c4 -> 32
+            imagebutton_r4c5 -> 33
+            imagebutton_r4c6 -> 34
+            imagebutton_r5c0 -> 35
+            imagebutton_r5c1 -> 36
+            imagebutton_r5c2 -> 37
+            imagebutton_r5c3 -> 38
+            imagebutton_r5c4 -> 39
+            imagebutton_r5c5 -> 40
+            imagebutton_r5c6 -> 41
+            imagebutton_r6c0 -> 42
+            imagebutton_r6c1 -> 43
+            imagebutton_r6c2 -> 44
+            imagebutton_r6c3 -> 45
+            imagebutton_r6c4 -> 46
+            imagebutton_r6c5 -> 47
+            imagebutton_r6c6 -> 48
+            imagebutton_r7c0 -> 49
+            imagebutton_r7c1 -> 50
+            imagebutton_r7c2 -> 51
+            else -> 99
+        }
+        doCardAction(location)
+    }
+
+     fun test(view: View) {
+
         when (view) {
             imagebutton_r0c0 -> when (selectCount) {
 
@@ -90,7 +151,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     currentImageButton = imagebutton_r0c0
                     currentImage = image_r0c0
                     currentImageButton.setImageResource(android.R.color.transparent)
-                    imagebutton_r0c0.setImageResource(android.R.color.transparent)
                     evaluatePair()
                     delay(isPair)
                     selectCount = 3
@@ -1507,6 +1567,461 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         image_r7c2.setImageResource(deckId[51])
     }
 
+    fun doCardAction(location: Int){
+
+        when(selectCount){
+
+            1 -> {
+                currentSelection(location)
+                pairX = location
+                soundCardFirst.start()
+                selectCount = 2
+            }
+            2 -> {
+                previousSelection(location)
+                pairY = location
+                evaluatePair()
+                delay(isPair)
+                selectCount = 3
+            }
+            3 -> {//nothing
+            }
+        }
+
+    }
+
+    fun currentSelection(location:Int){
+
+        when (location){
+
+            0 -> {
+                currentImage = image_r0c0
+                currentImageButton = imagebutton_r0c0
+            }
+            1 -> {
+                currentImage = image_r0c1
+                currentImageButton = imagebutton_r0c1
+            }
+            2 -> {
+                currentImage = image_r0c2
+                currentImageButton = imagebutton_r0c2
+            }
+            3 -> {
+                currentImage = image_r0c3
+                currentImageButton = imagebutton_r0c3
+            }
+            4 -> {
+                currentImage = image_r0c4
+                currentImageButton = imagebutton_r0c4
+            }
+            5 -> {
+                currentImage = image_r0c5
+                currentImageButton = imagebutton_r0c5
+            }
+            6 -> {
+                currentImage = image_r0c6
+                currentImageButton = imagebutton_r0c6
+            }
+            7 -> {
+                currentImage = image_r1c0
+                currentImageButton = imagebutton_r1c0
+            }
+            8 -> {
+                currentImage = image_r1c1
+                currentImageButton = imagebutton_r1c1
+            }
+            9 -> {
+                currentImage = image_r1c2
+                currentImageButton = imagebutton_r1c2
+            }
+            10 -> {
+                currentImage = image_r1c3
+                currentImageButton = imagebutton_r1c3
+            }
+            11 -> {
+                currentImage = image_r1c4
+                currentImageButton = imagebutton_r1c4
+            }
+            12 -> {
+                currentImage = image_r1c5
+                currentImageButton = imagebutton_r1c5
+            }
+            13 -> {
+                currentImage = image_r1c6
+                currentImageButton = imagebutton_r1c6
+            }
+            14 -> {
+                currentImage = image_r2c0
+                currentImageButton = imagebutton_r2c0
+            }
+            15 -> {
+                currentImage = image_r2c1
+                currentImageButton = imagebutton_r2c1
+            }
+            16 -> {
+                currentImage = image_r2c2
+                currentImageButton = imagebutton_r2c2
+            }
+            17 -> {
+                currentImage = image_r2c3
+                currentImageButton = imagebutton_r2c3
+            }
+            18 -> {
+                currentImage = image_r2c4
+                currentImageButton = imagebutton_r2c4
+            }
+            19 -> {
+                currentImage = image_r2c5
+                currentImageButton = imagebutton_r2c5
+            }
+            20 -> {
+                currentImage = image_r2c6
+                currentImageButton = imagebutton_r2c6
+            }
+            21 -> {
+                currentImage = image_r3c0
+                currentImageButton = imagebutton_r3c0
+            }
+            22 -> {
+                currentImage = image_r3c1
+                currentImageButton = imagebutton_r3c1
+            }
+            23 -> {
+                currentImage = image_r3c2
+                currentImageButton = imagebutton_r3c2
+            }
+            24 -> {
+                currentImage = image_r3c3
+                currentImageButton = imagebutton_r3c3
+            }
+            25 -> {
+                currentImage = image_r3c4
+                currentImageButton = imagebutton_r3c4
+            }
+            26 -> {
+                currentImage = image_r3c5
+                currentImageButton = imagebutton_r3c5
+            }
+            27 -> {
+                currentImage = image_r3c6
+                currentImageButton = imagebutton_r3c6
+            }
+            28 -> {
+                currentImage = image_r4c0
+                currentImageButton = imagebutton_r4c0
+            }
+            29 -> {
+                currentImage = image_r4c1
+                currentImageButton = imagebutton_r4c1
+            }
+            30 -> {
+                currentImage = image_r4c2
+                currentImageButton = imagebutton_r4c2
+            }
+            31 -> {
+                currentImage = image_r4c3
+                currentImageButton = imagebutton_r4c3
+            }
+            32 -> {
+                currentImage = image_r4c4
+                currentImageButton = imagebutton_r4c4
+            }
+            33 -> {
+                currentImage = image_r4c5
+                currentImageButton = imagebutton_r4c5
+            }
+            34 -> {
+                currentImage = image_r4c6
+                currentImageButton = imagebutton_r4c6
+            }
+            35 -> {
+                currentImage = image_r5c0
+                currentImageButton = imagebutton_r5c0
+            }
+            36 -> {
+                currentImage = image_r5c1
+                currentImageButton = imagebutton_r5c1
+            }
+            37 -> {
+                currentImage = image_r5c2
+                currentImageButton = imagebutton_r5c2
+            }
+            38 -> {
+                currentImage = image_r5c3
+                currentImageButton = imagebutton_r5c3
+            }
+            39 -> {
+                currentImage = image_r5c4
+                currentImageButton = imagebutton_r5c4
+            }
+            40 -> {
+                currentImage = image_r5c5
+                currentImageButton = imagebutton_r5c5
+            }
+            41 -> {
+                currentImage = image_r5c6
+                currentImageButton = imagebutton_r5c6
+            }
+            42 -> {
+                currentImage = image_r6c0
+                currentImageButton = imagebutton_r6c0
+            }
+            43 -> {
+                currentImage = image_r6c1
+                currentImageButton = imagebutton_r6c1
+            }
+            44 -> {
+                currentImage = image_r6c2
+                currentImageButton = imagebutton_r6c2
+            }
+            45 -> {
+                currentImage = image_r6c3
+                currentImageButton = imagebutton_r6c3
+            }
+            46 -> {
+                currentImage = image_r6c4
+                currentImageButton = imagebutton_r6c4
+            }
+            47 -> {
+                currentImage = image_r6c5
+                currentImageButton = imagebutton_r6c5
+            }
+            48 -> {
+                currentImage = image_r6c6
+                currentImageButton = imagebutton_r6c6
+            }
+            49 -> {
+                currentImage = image_r7c0
+                currentImageButton = imagebutton_r7c0
+            }
+            50 -> {
+                currentImage = image_r7c1
+                currentImageButton = imagebutton_r7c1
+            }
+            51 -> {
+                currentImage = image_r7c2
+                currentImageButton = imagebutton_r7c2
+            }
+        }
+        currentImageButton.setImageResource(android.R.color.transparent)
+    }
+
+    fun previousSelection(location:Int){
+
+        when (location){
+
+            0 -> {
+                previousImage = image_r0c0
+                previousImageButton = imagebutton_r0c0
+            }
+            1 -> {
+                previousImage = image_r0c1
+                previousImageButton = imagebutton_r0c1
+            }
+            2 -> {
+                previousImage = image_r0c2
+                previousImageButton = imagebutton_r0c2
+            }
+            3 -> {
+                previousImage = image_r0c3
+                previousImageButton = imagebutton_r0c3
+            }
+            4 -> {
+                previousImage = image_r0c4
+                previousImageButton = imagebutton_r0c4
+            }
+            5 -> {
+                previousImage = image_r0c5
+                previousImageButton = imagebutton_r0c5
+            }
+            6 -> {
+                previousImage = image_r0c6
+                previousImageButton = imagebutton_r0c6
+            }
+            7 -> {
+                previousImage = image_r1c0
+                previousImageButton = imagebutton_r1c0
+            }
+            8 -> {
+                previousImage = image_r1c1
+                previousImageButton = imagebutton_r1c1
+            }
+            9 -> {
+                previousImage = image_r1c2
+                previousImageButton = imagebutton_r1c2
+            }
+            10 -> {
+                previousImage = image_r1c3
+                previousImageButton = imagebutton_r1c3
+            }
+            11 -> {
+                previousImage = image_r1c4
+                previousImageButton = imagebutton_r1c4
+            }
+            12 -> {
+                previousImage = image_r1c5
+                previousImageButton = imagebutton_r1c5
+            }
+            13 -> {
+                previousImage = image_r1c6
+                previousImageButton = imagebutton_r1c6
+            }
+            14 -> {
+                previousImage = image_r2c0
+                previousImageButton = imagebutton_r2c0
+            }
+            15 -> {
+                previousImage = image_r2c1
+                previousImageButton = imagebutton_r2c1
+            }
+            16 -> {
+                previousImage = image_r2c2
+                previousImageButton = imagebutton_r2c2
+            }
+            17 -> {
+                previousImage = image_r2c3
+                previousImageButton = imagebutton_r2c3
+            }
+            18 -> {
+                previousImage = image_r2c4
+                previousImageButton = imagebutton_r2c4
+            }
+            19 -> {
+                previousImage = image_r2c5
+                previousImageButton = imagebutton_r2c5
+            }
+            20 -> {
+                previousImage = image_r2c6
+                previousImageButton = imagebutton_r2c6
+            }
+            21 -> {
+                previousImage = image_r3c0
+                previousImageButton = imagebutton_r3c0
+            }
+            22 -> {
+                previousImage = image_r3c1
+                previousImageButton = imagebutton_r3c1
+            }
+            23 -> {
+                previousImage = image_r3c2
+                previousImageButton = imagebutton_r3c2
+            }
+            24 -> {
+                previousImage = image_r3c3
+                previousImageButton = imagebutton_r3c3
+            }
+            25 -> {
+                previousImage = image_r3c4
+                previousImageButton = imagebutton_r3c4
+            }
+            26 -> {
+                previousImage = image_r3c5
+                previousImageButton = imagebutton_r3c5
+            }
+            27 -> {
+                previousImage = image_r3c6
+                previousImageButton = imagebutton_r3c6
+            }
+            28 -> {
+                previousImage = image_r4c0
+                previousImageButton = imagebutton_r4c0
+            }
+            29 -> {
+                previousImage = image_r4c1
+                previousImageButton = imagebutton_r4c1
+            }
+            30 -> {
+                previousImage = image_r4c2
+                previousImageButton = imagebutton_r4c2
+            }
+            31 -> {
+                previousImage = image_r4c3
+                previousImageButton = imagebutton_r4c3
+            }
+            32 -> {
+                previousImage = image_r4c4
+                previousImageButton = imagebutton_r4c4
+            }
+            33 -> {
+                previousImage = image_r4c5
+                previousImageButton = imagebutton_r4c5
+            }
+            34 -> {
+                previousImage = image_r4c6
+                previousImageButton = imagebutton_r4c6
+            }
+            35 -> {
+                previousImage = image_r5c0
+                previousImageButton = imagebutton_r5c0
+            }
+            36 -> {
+                previousImage = image_r5c1
+                previousImageButton = imagebutton_r5c1
+            }
+            37 -> {
+                previousImage = image_r5c2
+                previousImageButton = imagebutton_r5c2
+            }
+            38 -> {
+                previousImage = image_r5c3
+                previousImageButton = imagebutton_r5c3
+            }
+            39 -> {
+                previousImage = image_r5c4
+                previousImageButton = imagebutton_r5c4
+            }
+            40 -> {
+                previousImage = image_r5c5
+                previousImageButton = imagebutton_r5c5
+            }
+            41 -> {
+                previousImage = image_r5c6
+                previousImageButton = imagebutton_r5c6
+            }
+            42 -> {
+                previousImage = image_r6c0
+                previousImageButton = imagebutton_r6c0
+            }
+            43 -> {
+                previousImage = image_r6c1
+                previousImageButton = imagebutton_r6c1
+            }
+            44 -> {
+                previousImage = image_r6c2
+                previousImageButton = imagebutton_r6c2
+            }
+            45 -> {
+                previousImage = image_r6c3
+                previousImageButton = imagebutton_r6c3
+            }
+            46 -> {
+                previousImage = image_r6c4
+                previousImageButton = imagebutton_r6c4
+            }
+            47 -> {
+                previousImage = image_r6c5
+                previousImageButton = imagebutton_r6c5
+            }
+            48 -> {
+                previousImage = image_r6c6
+                previousImageButton = imagebutton_r6c6
+            }
+            49 -> {
+                previousImage = image_r7c0
+                previousImageButton = imagebutton_r7c0
+            }
+            50 -> {
+                previousImage = image_r7c1
+                previousImageButton = imagebutton_r7c1
+            }
+            51 -> {
+                previousImage = image_r7c2
+                previousImageButton = imagebutton_r7c2
+            }
+        }
+        previousImageButton.setImageResource(android.R.color.transparent)
+    }
+
     private fun delay(pair: Int) {
         val handler = Handler()
         when (pair) {
@@ -1554,10 +2069,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun evaluatePair() {
         Log.d("MainActivity() evaluatePair() ", " order[$pairX] order[$pairY] ")
 
-        //FIX error case: self pair
-
-        if (pairX == pairY) {
-            Toast.makeText(this, "Can not pair a card with itself!", Toast.LENGTH_SHORT).show()
+        if (pairX == pairY) { //FIX error case: self pair
+            Toast.makeText(this, "IMPOSSIBLE Self Pair", Toast.LENGTH_SHORT).show()
             isPair = 0
         } else if (deckOrder[pairX] == deckOrder[pairY]) {
             isPair = 1 //IS PAIR
