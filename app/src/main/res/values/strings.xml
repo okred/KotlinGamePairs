@@ -13,4 +13,6 @@
     <string name="dialog_message">Record Score?</string>
     <string name="enter_name">Enter Name here</string>
 
+    <string name="test_push_force">Enter Name here</string>
+
 </resources>
