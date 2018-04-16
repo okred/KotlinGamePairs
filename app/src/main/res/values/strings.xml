@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">KotlinGamePairs</string>
-
     <string name="list_name">Name</string>
     <string name="list_attempts">Attempts</string>
     <string name="list_rating">Rating</string>
@@ -14,5 +13,6 @@
     <string name="dialog_message">Record Score?</string>
     <string name="enter_name">Enter Name here</string>
 
+    <string name="test_push_force">Enter Name here</string>
 
 </resources>
