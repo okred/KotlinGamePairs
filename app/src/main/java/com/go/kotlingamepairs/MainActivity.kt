@@ -39,6 +39,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var deckOrder = IntArray(52)
     private var deckId = IntArray(52)
 
+    override fun onPause(){
+        super.onPause()
+
+        soundBackground.pause()
+
+    }
+    override fun onResume(){
+        super.onResume()
+
+        soundBackground.start()
+
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)

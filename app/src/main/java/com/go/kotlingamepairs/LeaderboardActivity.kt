@@ -18,7 +18,20 @@ class LeaderboardActivity : AppCompatActivity() {
 
     private lateinit var soundBackgroundLeaderboard: MediaPlayer
 
+    override fun onPause(){
+        super.onPause()
+
+        soundBackgroundLeaderboard.pause()
+    }
+
+    override fun onResume(){
+        super.onResume()
+
+        soundBackgroundLeaderboard.start()
+    }
+
     override fun onBackPressed() {
+
         soundBackgroundLeaderboard.stop()
         startActivity(Intent(this, MainActivity::class.java))
         finish()
