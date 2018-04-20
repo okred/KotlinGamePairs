@@ -61,7 +61,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/text_title_rating"
+        android:id="@+id/text_rating_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/belgrano"
@@ -70,12 +70,12 @@
         android:textColor="@android:color/white"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/top_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/text_title_name"
+        app:layout_constraintEnd_toStartOf="@+id/text_name_title"
         app:layout_constraintLeft_toLeftOf="@id/left_guideline"
         app:layout_constraintTop_toTopOf="@+id/top_title_guideline" />
 
     <TextView
-        android:id="@+id/text_title_name"
+        android:id="@+id/text_name_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/belgrano"
@@ -84,12 +84,12 @@
         android:textColor="@android:color/white"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/top_guideline"
-        app:layout_constraintEnd_toStartOf="@+id/text_title_attempts"
-        app:layout_constraintStart_toEndOf="@+id/text_title_rating"
+        app:layout_constraintEnd_toStartOf="@+id/text_attempts_title"
+        app:layout_constraintStart_toEndOf="@+id/text_rating_title"
         app:layout_constraintTop_toTopOf="@+id/top_title_guideline" />
 
     <TextView
-        android:id="@+id/text_title_attempts"
+        android:id="@+id/text_attempts_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/belgrano"
@@ -99,7 +99,7 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/top_guideline"
         app:layout_constraintRight_toRightOf="@id/right_guideline"
-        app:layout_constraintStart_toEndOf="@+id/text_title_name"
+        app:layout_constraintStart_toEndOf="@+id/text_name_title"
         app:layout_constraintTop_toTopOf="@+id/top_title_guideline"
         app:layout_constraintVertical_bias="0.472" />
 
@@ -112,7 +112,6 @@
         app:layout_constraintLeft_toLeftOf="@+id/left_guideline"
         app:layout_constraintRight_toRightOf="@+id/right_guideline"
         app:layout_constraintTop_toTopOf="@+id/top_guideline" />
-
 
 </android.support.constraint.ConstraintLayout>
 

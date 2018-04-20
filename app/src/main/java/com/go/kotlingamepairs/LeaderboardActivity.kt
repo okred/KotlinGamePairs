@@ -1,5 +1,6 @@
 package com.go.kotlingamepairs
 
+import android.annotation.SuppressLint
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
@@ -11,31 +12,13 @@ import android.content.Intent
 
 class LeaderboardActivity : AppCompatActivity() {
 
+    private lateinit var soundMusicLeaderboard: MediaPlayer
+
     internal var time: TextView? = null
-    private var attemptsValue = -1
+    private var attemptsVal = -1
+
     private var nameCustom = "default"
-    private var ratingValue = "X"
-
-    private lateinit var soundBackgroundLeaderboard: MediaPlayer
-
-    override fun onPause(){
-        super.onPause()
-
-        soundBackgroundLeaderboard.pause()
-    }
-
-    override fun onResume(){
-        super.onResume()
-
-        soundBackgroundLeaderboard.start()
-    }
-
-    override fun onBackPressed() {
-
-        soundBackgroundLeaderboard.stop()
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
-    }
+    private var ratingVal = "X"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,29 +26,29 @@ class LeaderboardActivity : AppCompatActivity() {
         setContentView(R.layout.activity_leaderboard)
 
         //LOAD music
-        soundBackgroundLeaderboard = MediaPlayer.create(this, R.raw.music_background_leaderboard)
-        soundBackgroundLeaderboard.start()
-        soundBackgroundLeaderboard.isLooping
+        soundMusicLeaderboard = MediaPlayer.create(this, R.raw.music_leaderboard)
+        soundMusicLeaderboard.start()
+        soundMusicLeaderboard.isLooping
 
         //GET values from intent
         val intent = intent
-        attemptsValue = intent.getIntExtra("EXTRA_attemptCount", -1)
+        attemptsVal = intent.getIntExtra("EXTRA_attemptCount", -1)
         evaluateRating()
 
         //CONFIG dialog on Launch
         val inflater = layoutInflater
+        @SuppressLint("InflateParams")
         val alertLayout = inflater.inflate(R.layout.dialog_leaderboard_inputscore, null)
         val alert = AlertDialog.Builder(this@LeaderboardActivity)
 
-       // alert.setTitle("Your Results")
         alert.setView(alertLayout)
 
-        //potentially further develop for time
-        val rating = alertLayout.findViewById<TextView>(R.id.textViewRatingValue)
-        val numberAttempts = alertLayout.findViewById<TextView>(R.id.textViewAttemptsValue)
-        val inputName = alertLayout.findViewById<EditText>(R.id.editTextName)
-        rating.text = ratingValue
-        numberAttempts.text = String.format("%03d", attemptsValue)
+        val rating = alertLayout.findViewById<TextView>(R.id.text_dialog_rating)
+        val numberAttempts = alertLayout.findViewById<TextView>(R.id.text_dialog_attempts)
+        val inputName = alertLayout.findViewById<EditText>(R.id.edit_dialog_name)
+
+        rating.text = ratingVal
+        numberAttempts.text = String.format("%03d", attemptsVal)
 
         //CONFIG buttons
         alert.setCancelable(true)
@@ -80,19 +63,34 @@ class LeaderboardActivity : AppCompatActivity() {
         dialog.show()
     }
 
-//    private fun showAlertDialog(attemptsValue : Int) {
-//        Log.d("LeaderboardaActivity", "showAlertDialog()")
-//        val fm = supportFragmentManager
-//        val alertDialog = NameInputDialogFragment.newInstance(-1)
-//        val bundle = Bundle()
-//        bundle.putInt("attemptsValue", attemptsValue)
-//        alertDialog.arguments = bundle
-//        alertDialog.show(fm, "fragment_alert")
-//
-//    }
+    override fun onResume(){
+        super.onResume()
+
+        soundMusicLeaderboard.start()
+    }
+
+    override fun onPause(){
+        super.onPause()
+
+        soundMusicLeaderboard.pause()
+    }
+
+    override fun onBackPressed() {
+
+        soundMusicLeaderboard.stop()
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+    }
+
+    fun testSetPositionList(position: Int) {
+
+        val leaderboardListFragment = fragmentManager.findFragmentById(R.id.fragment_listview) as LeaderboardListFragment
+        leaderboardListFragment.listView.smoothScrollToPositionFromTop(position, 0)
+    }
+
     private fun evaluateRating() {
-        //Top score - 26 Perfect, no mistakes
-        ratingValue = when(attemptsValue){
+        //Top score - 26 = Perfect, no mistakes
+        ratingVal = when(attemptsVal){
             in 1..50 ->  "S"
             in 50..55 -> "A"
             in 55..61 -> "B"
@@ -101,12 +99,6 @@ class LeaderboardActivity : AppCompatActivity() {
             in 79..89 -> "E"
             else  ->     "F"
         }
-    }
-
-    fun testSetPositionList(position: Int) {
-
-        val fragmentListLeaderboard = fragmentManager.findFragmentById(R.id.fragment_listview) as LeaderboardListFragment
-        fragmentListLeaderboard.listView.smoothScrollToPositionFromTop(position, 0)
     }
 
 }

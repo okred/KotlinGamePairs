@@ -7,8 +7,9 @@ class LeaderboardListFragment : ListFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        listAdapter = CustomListAdapter(activity, LeaderboardData.nameArray,
-                LeaderboardData.attemptsArray)
+
+        listAdapter = CustomListAdapter(activity, LeaderboardData.name,
+                LeaderboardData.attempts)
         //TODO - get data from SQL array table instead
     }
 

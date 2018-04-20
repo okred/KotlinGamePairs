@@ -20,44 +20,32 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var soundCardFirst: MediaPlayer
     private lateinit var soundCardSecondNot: MediaPlayer
     private lateinit var soundCardSecondPair: MediaPlayer
-    private lateinit var soundBackground: MediaPlayer
+    private lateinit var soundMusic: MediaPlayer
 
     private lateinit var previousImageButton: ImageButton
     private lateinit var currentImageButton: ImageButton
-
     private lateinit var previousImage: ImageView
     private lateinit var currentImage: ImageView
 
     private lateinit var context: Context
 
-    private var selectCount = 1
-    private var attemptCount = 59
-    private var pairCount = 25
-    private var pairX: Int = 0
-    private var pairY = 99
-    private var isPair = 0
     private var deckOrder = IntArray(52)
     private var deckId = IntArray(52)
 
-    override fun onPause(){
-        super.onPause()
+    private var selectCount = 1
+    private var attemptCount = 59
+    private var pairCount = 25
+    private var pairId1: Int = 0
+    private var pairId2 = 99
+    private var isPair = false
 
-        soundBackground.pause()
-
-    }
-    override fun onResume(){
-        super.onResume()
-
-        soundBackground.start()
-
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.activity_main)
         context = this
 
-        //default values not used, error prevent case first click
+        //FIX error case: first click. default values are not used.
         currentImageButton = imagebutton_r0c0
         previousImageButton = imagebutton_r0c0
 
@@ -67,19 +55,30 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val deck = Cards(context)
         deck.fillDeck()
         deck.shuffleDeck()
-        deckOrder = deck.orderArray
-        deckId = deck.deckIdArray
+        deckOrder = deck.order
+        deckId = deck.deckId
         assignCardImage()
 
-        //CHECK cards
-        Log.d("MainActivity()", "onCreate "+deckId[1])
-
-        //Initializing the media players for the game sounds
+        //CONFIG sounds
         soundCardFirst = MediaPlayer.create(context, R.raw.sfx_gun_load)
         soundCardSecondNot = MediaPlayer.create(context, R.raw.sfx_gun_miss)
         soundCardSecondPair = MediaPlayer.create(context, R.raw.sfx_gun_boom)
-        soundBackground = MediaPlayer.create(context, R.raw.music_background_main)
-        soundBackground.start()
+        soundMusic = MediaPlayer.create(context, R.raw.music_main)
+        soundMusic.start()
+    }
+
+    override fun onResume(){
+        super.onResume()
+
+        soundMusic.start()
+
+    }
+
+    override fun onPause(){
+        super.onPause()
+
+        soundMusic.pause()
+
     }
 
     override fun onClick(view: View) {
@@ -89,16 +88,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 0
+                    pairId1 = 0
                     previousImageButton = imagebutton_r0c0
                     previousImage = image_r0c0
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 0
+                    pairId2 = 0
                     currentImageButton = imagebutton_r0c0
                     currentImage = image_r0c0
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -107,7 +106,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -115,16 +114,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 1
+                    pairId1 = 1
                     previousImageButton = imagebutton_r0c1
                     previousImage = image_r0c1
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 1
+                    pairId2 = 1
                     currentImageButton = imagebutton_r0c1
                     currentImage = image_r0c1
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -132,7 +131,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -140,16 +139,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 2
+                    pairId1 = 2
                     previousImageButton = imagebutton_r0c2
                     previousImage = image_r0c2
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 2
+                    pairId2 = 2
                     currentImageButton = imagebutton_r0c2
                     currentImage = image_r0c2
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -157,7 +156,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -165,16 +164,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 3
+                    pairId1 = 3
                     previousImageButton = imagebutton_r0c3
                     previousImage = image_r0c3
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 3
+                    pairId2 = 3
 
                     currentImageButton = imagebutton_r0c3
                     currentImage = image_r0c3
@@ -183,7 +182,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -191,16 +190,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 4
+                    pairId1 = 4
                     previousImageButton = imagebutton_r0c4
                     previousImage = image_r0c4
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 4
+                    pairId2 = 4
                     currentImageButton = imagebutton_r0c4
                     currentImage = image_r0c4
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -208,7 +207,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -216,16 +215,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 5
+                    pairId1 = 5
                     previousImageButton = imagebutton_r0c5
                     previousImage = image_r0c5
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 5
+                    pairId2 = 5
                     currentImageButton = imagebutton_r0c5
                     currentImage = image_r0c5
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -233,7 +232,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -241,16 +240,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 6
+                    pairId1 = 6
                     previousImageButton = imagebutton_r0c6
                     previousImage = image_r0c6
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 6
+                    pairId2 = 6
                     currentImageButton = imagebutton_r0c6
                     currentImage = image_r0c6
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -258,7 +257,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -266,16 +265,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 7
+                    pairId1 = 7
                     previousImageButton = imagebutton_r1c0
                     previousImage = image_r1c0
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 7
+                    pairId2 = 7
                     currentImageButton = imagebutton_r1c0
                     currentImage = image_r1c0
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -283,7 +282,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -291,16 +290,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 8
+                    pairId1 = 8
                     previousImageButton = imagebutton_r1c1
                     previousImage = image_r1c1
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 8
+                    pairId2 = 8
                     currentImageButton = imagebutton_r1c1
                     currentImage = image_r1c1
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -308,7 +307,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -316,16 +315,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 9
+                    pairId1 = 9
                     previousImageButton = imagebutton_r1c2
                     previousImage = image_r1c2
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 9
+                    pairId2 = 9
                     currentImageButton = imagebutton_r1c2
                     currentImage = image_r1c2
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -333,7 +332,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -341,16 +340,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 10
+                    pairId1 = 10
                     previousImageButton = imagebutton_r1c3
                     previousImage = image_r1c3
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 10
+                    pairId2 = 10
                     currentImageButton = imagebutton_r1c3
                     currentImage = image_r1c3
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -358,7 +357,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -366,16 +365,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 11
+                    pairId1 = 11
                     previousImageButton = imagebutton_r1c4
                     previousImage = image_r1c4
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 11
+                    pairId2 = 11
                     currentImageButton = imagebutton_r1c4
                     currentImage = image_r1c4
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -383,7 +382,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -391,16 +390,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 12
+                    pairId1 = 12
                     previousImageButton = imagebutton_r1c5
                     previousImage = image_r1c5
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 12
+                    pairId2 = 12
                     currentImageButton = imagebutton_r1c5
                     currentImage = image_r1c5
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -408,7 +407,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -416,16 +415,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 13
+                    pairId1 = 13
                     previousImageButton = imagebutton_r1c6
                     previousImage = image_r1c6
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 13
+                    pairId2 = 13
                     currentImageButton = imagebutton_r1c6
                     currentImage = image_r1c6
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -433,7 +432,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -441,16 +440,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 14
+                    pairId1 = 14
                     previousImageButton = imagebutton_r2c0
                     previousImage = image_r2c0
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 14
+                    pairId2 = 14
                     currentImageButton = imagebutton_r2c0
                     currentImage = image_r2c0
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -458,7 +457,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -466,16 +465,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 15
+                    pairId1 = 15
                     previousImageButton = imagebutton_r2c1
                     previousImage = image_r2c1
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 15
+                    pairId2 = 15
                     currentImageButton = imagebutton_r2c1
                     currentImage = image_r2c1
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -483,7 +482,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -491,16 +490,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 16
+                    pairId1 = 16
                     previousImageButton = imagebutton_r2c2
                     previousImage = image_r2c2
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 16
+                    pairId2 = 16
                     currentImageButton = imagebutton_r2c2
                     currentImage = image_r2c2
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -508,7 +507,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -516,16 +515,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 17
+                    pairId1 = 17
                     previousImageButton = imagebutton_r2c3
                     previousImage = image_r2c3
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 17
+                    pairId2 = 17
                     currentImageButton = imagebutton_r2c3
                     currentImage = image_r2c3
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -533,7 +532,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -541,16 +540,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 18
+                    pairId1 = 18
                     previousImageButton = imagebutton_r2c4
                     previousImage = image_r2c4
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 18
+                    pairId2 = 18
                     currentImageButton = imagebutton_r2c4
                     currentImage = image_r2c4
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -558,7 +557,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -566,16 +565,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 19
+                    pairId1 = 19
                     previousImageButton = imagebutton_r2c5
                     previousImage = image_r2c5
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 19
+                    pairId2 = 19
                     currentImageButton = imagebutton_r2c5
                     currentImage = image_r2c5
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -583,7 +582,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -591,16 +590,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 20
+                    pairId1 = 20
                     previousImageButton = imagebutton_r2c6
                     previousImage = image_r2c6
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 20
+                    pairId2 = 20
                     currentImageButton = imagebutton_r2c6
                     currentImage = image_r2c6
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -608,7 +607,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -616,16 +615,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 21
+                    pairId1 = 21
                     previousImageButton = imagebutton_r3c0
                     previousImage = image_r3c0
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 21
+                    pairId2 = 21
                     currentImageButton = imagebutton_r3c0
                     currentImage = image_r3c0
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -633,7 +632,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -641,16 +640,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 22
+                    pairId1 = 22
                     previousImageButton = imagebutton_r3c1
                     previousImage = image_r3c1
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 22
+                    pairId2 = 22
                     currentImageButton = imagebutton_r3c1
                     currentImage = image_r3c1
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -658,7 +657,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -666,16 +665,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 23
+                    pairId1 = 23
                     previousImageButton = imagebutton_r3c2
                     previousImage = image_r3c2
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 23
+                    pairId2 = 23
                     currentImageButton = imagebutton_r3c2
                     currentImage = image_r3c2
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -683,7 +682,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -691,16 +690,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 24
+                    pairId1 = 24
                     previousImageButton = imagebutton_r3c3
                     previousImage = image_r3c3
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 24
+                    pairId2 = 24
                     currentImageButton = imagebutton_r3c3
                     currentImage = image_r3c3
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -708,7 +707,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -716,16 +715,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 25
+                    pairId1 = 25
                     previousImageButton = imagebutton_r3c4
                     previousImage = image_r3c4
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 25
+                    pairId2 = 25
                     currentImageButton = imagebutton_r3c4
                     currentImage = image_r3c4
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -733,7 +732,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -741,16 +740,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 26
+                    pairId1 = 26
                     previousImageButton = imagebutton_r3c5
                     previousImage = image_r3c5
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 26
+                    pairId2 = 26
                     currentImageButton = imagebutton_r3c5
                     currentImage = image_r3c5
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -758,7 +757,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -766,16 +765,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 27
+                    pairId1 = 27
                     previousImageButton = imagebutton_r3c6
                     previousImage = image_r3c6
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 27
+                    pairId2 = 27
                     currentImageButton = imagebutton_r3c6
                     currentImage = image_r3c6
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -783,7 +782,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -791,16 +790,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 28
+                    pairId1 = 28
                     previousImageButton = imagebutton_r4c0
                     previousImage = image_r4c0
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 28
+                    pairId2 = 28
                     currentImageButton = imagebutton_r4c0
                     currentImage = image_r4c0
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -808,7 +807,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -816,16 +815,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 29
+                    pairId1 = 29
                     previousImageButton = imagebutton_r4c1
                     previousImage = image_r4c1
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 29
+                    pairId2 = 29
                     currentImageButton = imagebutton_r4c1
                     currentImage = image_r4c1
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -833,7 +832,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -841,16 +840,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 30
+                    pairId1 = 30
                     previousImageButton = imagebutton_r4c2
                     previousImage = image_r4c2
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 30
+                    pairId2 = 30
                     currentImageButton = imagebutton_r4c2
                     currentImage = image_r4c2
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -858,7 +857,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -866,16 +865,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 31
+                    pairId1 = 31
                     previousImageButton = imagebutton_r4c3
                     previousImage = image_r4c3
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 31
+                    pairId2 = 31
                     currentImageButton = imagebutton_r4c3
                     currentImage = image_r4c3
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -883,7 +882,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -891,16 +890,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 32
+                    pairId1 = 32
                     previousImageButton = imagebutton_r4c4
                     previousImage = image_r4c4
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 32
+                    pairId2 = 32
                     currentImageButton = imagebutton_r4c4
                     currentImage = image_r4c4
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -908,7 +907,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -916,16 +915,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 33
+                    pairId1 = 33
                     previousImageButton = imagebutton_r4c5
                     previousImage = image_r4c5
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 33
+                    pairId2 = 33
                     currentImageButton = imagebutton_r4c5
                     currentImage = image_r4c5
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -933,7 +932,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -941,16 +940,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 34
+                    pairId1 = 34
                     previousImageButton = imagebutton_r4c6
                     previousImage = image_r4c6
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 34
+                    pairId2 = 34
                     currentImageButton = imagebutton_r4c6
                     currentImage = image_r4c6
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -958,7 +957,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -966,16 +965,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 35
+                    pairId1 = 35
                     previousImageButton = imagebutton_r5c0
                     previousImage = image_r5c0
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 35
+                    pairId2 = 35
                     currentImageButton = imagebutton_r5c0
                     currentImage = image_r5c0
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -983,7 +982,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -991,16 +990,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 36
+                    pairId1 = 36
                     previousImageButton = imagebutton_r5c1
                     previousImage = image_r5c1
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 36
+                    pairId2 = 36
                     currentImageButton = imagebutton_r5c1
                     currentImage = image_r5c1
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1008,7 +1007,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -1016,16 +1015,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 37
+                    pairId1 = 37
                     previousImageButton = imagebutton_r5c2
                     previousImage = image_r5c2
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 37
+                    pairId2 = 37
                     currentImageButton = imagebutton_r5c2
                     currentImage = image_r5c2
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1033,7 +1032,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -1041,16 +1040,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 38
+                    pairId1 = 38
                     previousImageButton = imagebutton_r5c3
                     previousImage = image_r5c3
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 38
+                    pairId2 = 38
                     currentImageButton = imagebutton_r5c3
                     currentImage = image_r5c3
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1058,7 +1057,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -1066,16 +1065,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 39
+                    pairId1 = 39
                     previousImageButton = imagebutton_r5c4
                     previousImage = image_r5c4
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 39
+                    pairId2 = 39
                     currentImageButton = imagebutton_r5c4
                     currentImage = image_r5c4
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1083,7 +1082,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -1091,16 +1090,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 40
+                    pairId1 = 40
                     previousImageButton = imagebutton_r5c5
                     previousImage = image_r5c5
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 40
+                    pairId2 = 40
                     currentImageButton = imagebutton_r5c5
                     currentImage = image_r5c5
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1108,7 +1107,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -1116,16 +1115,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 41
+                    pairId1 = 41
                     previousImageButton = imagebutton_r5c6
                     previousImage = image_r5c6
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 41
+                    pairId2 = 41
                     currentImageButton = imagebutton_r5c6
                     currentImage = image_r5c6
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1133,7 +1132,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -1141,16 +1140,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 42
+                    pairId1 = 42
                     previousImageButton = imagebutton_r6c0
                     previousImage = image_r6c0
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 42
+                    pairId2 = 42
                     currentImageButton = imagebutton_r6c0
                     currentImage = image_r6c0
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1158,7 +1157,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -1166,16 +1165,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 43
+                    pairId1 = 43
                     previousImageButton = imagebutton_r6c1
                     previousImage = image_r6c1
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 43
+                    pairId2 = 43
                     currentImageButton = imagebutton_r6c1
                     currentImage = image_r6c1
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1183,7 +1182,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -1191,16 +1190,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 44
+                    pairId1 = 44
                     previousImageButton = imagebutton_r6c2
                     previousImage = image_r6c2
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 44
+                    pairId2 = 44
                     currentImageButton = imagebutton_r6c2
                     currentImage = image_r6c2
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1208,7 +1207,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -1216,16 +1215,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 45
+                    pairId1 = 45
                     previousImageButton = imagebutton_r6c3
                     previousImage = image_r6c3
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 45
+                    pairId2 = 45
                     currentImageButton = imagebutton_r6c3
                     currentImage = image_r6c3
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1233,7 +1232,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -1241,16 +1240,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 46
+                    pairId1 = 46
                     previousImageButton = imagebutton_r6c4
                     previousImage = image_r6c4
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 46
+                    pairId2 = 46
                     currentImageButton = imagebutton_r6c4
                     currentImage = image_r6c4
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1258,7 +1257,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -1266,16 +1265,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 47
+                    pairId1 = 47
                     previousImageButton = imagebutton_r6c5
                     previousImage = image_r6c5
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 47
+                    pairId2 = 47
                     currentImageButton = imagebutton_r6c5
                     currentImage = image_r6c5
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1283,7 +1282,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -1291,16 +1290,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 48
+                    pairId1 = 48
                     previousImageButton = imagebutton_r6c6
                     previousImage = image_r6c6
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 48
+                    pairId2 = 48
                     currentImageButton = imagebutton_r6c6
                     currentImage = image_r6c6
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1308,7 +1307,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -1316,16 +1315,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 49
+                    pairId1 = 49
                     previousImageButton = imagebutton_r7c0
                     previousImage = image_r7c0
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 49
+                    pairId2 = 49
                     currentImageButton = imagebutton_r7c0
                     currentImage = image_r7c0
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1333,7 +1332,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -1341,16 +1340,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 50
+                    pairId1 = 50
                     previousImageButton = imagebutton_r7c1
                     previousImage = image_r7c1
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 50
+                    pairId2 = 50
                     currentImageButton = imagebutton_r7c1
                     currentImage = image_r7c1
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1358,7 +1357,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
@@ -1366,16 +1365,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 1  //SELECT 1 of 2 - Set transparent, save prev ImageButton/ImageView, add counter
                 -> {
-                    pairX = 51
+                    pairId1 = 51
                     previousImageButton = imagebutton_r7c2
                     previousImage = image_r7c2
                     previousImageButton.setImageResource(android.R.color.transparent)
                     selectCount = 2
                     soundCardFirst.start()
                 }
-                2 //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
+                2  //SELECT 2 of 2 -  Set transparent, save curr ImageButton/ImageView, evaluatePair
                 -> {
-                    pairY = 51
+                    pairId2 = 51
                     currentImageButton = imagebutton_r7c2
                     currentImage = image_r7c2
                     currentImageButton.setImageResource(android.R.color.transparent)
@@ -1383,75 +1382,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     delay(isPair)
                     selectCount = 3
                 }
-                3 //runnable is not finished. May not select any other cards
+                3  //NOT READY. Runnable is not finished. May not select any other cards
                 -> {
                 }
             }
         }
-    }
-
-    private fun setListeners(){
-
-        //ROW 0
-        imagebutton_r0c0.setOnClickListener(this)
-        imagebutton_r0c1.setOnClickListener(this)
-        imagebutton_r0c2.setOnClickListener(this)
-        imagebutton_r0c3.setOnClickListener(this)
-        imagebutton_r0c4.setOnClickListener(this)
-        imagebutton_r0c5.setOnClickListener(this)
-        imagebutton_r0c6.setOnClickListener(this)
-        //ROW 1
-        imagebutton_r1c0.setOnClickListener(this)
-        imagebutton_r1c1.setOnClickListener(this)
-        imagebutton_r1c2.setOnClickListener(this)
-        imagebutton_r1c3.setOnClickListener(this)
-        imagebutton_r1c4.setOnClickListener(this)
-        imagebutton_r1c5.setOnClickListener(this)
-        imagebutton_r1c6.setOnClickListener(this)
-        //ROW 2
-        imagebutton_r2c0.setOnClickListener(this)
-        imagebutton_r2c1.setOnClickListener(this)
-        imagebutton_r2c2.setOnClickListener(this)
-        imagebutton_r2c3.setOnClickListener(this)
-        imagebutton_r2c4.setOnClickListener(this)
-        imagebutton_r2c5.setOnClickListener(this)
-        imagebutton_r2c6.setOnClickListener(this)
-        //ROW 3
-        imagebutton_r3c0.setOnClickListener(this)
-        imagebutton_r3c1.setOnClickListener(this)
-        imagebutton_r3c2.setOnClickListener(this)
-        imagebutton_r3c3.setOnClickListener(this)
-        imagebutton_r3c4.setOnClickListener(this)
-        imagebutton_r3c5.setOnClickListener(this)
-        imagebutton_r3c6.setOnClickListener(this)
-        //ROW 4
-        imagebutton_r4c0.setOnClickListener(this)
-        imagebutton_r4c1.setOnClickListener(this)
-        imagebutton_r4c2.setOnClickListener(this)
-        imagebutton_r4c3.setOnClickListener(this)
-        imagebutton_r4c4.setOnClickListener(this)
-        imagebutton_r4c5.setOnClickListener(this)
-        imagebutton_r4c6.setOnClickListener(this)
-        //ROW 5
-        imagebutton_r5c0.setOnClickListener(this)
-        imagebutton_r5c1.setOnClickListener(this)
-        imagebutton_r5c2.setOnClickListener(this)
-        imagebutton_r5c3.setOnClickListener(this)
-        imagebutton_r5c4.setOnClickListener(this)
-        imagebutton_r5c5.setOnClickListener(this)
-        imagebutton_r5c6.setOnClickListener(this)
-        //ROW 6
-        imagebutton_r6c0.setOnClickListener(this)
-        imagebutton_r6c1.setOnClickListener(this)
-        imagebutton_r6c2.setOnClickListener(this)
-        imagebutton_r6c3.setOnClickListener(this)
-        imagebutton_r6c4.setOnClickListener(this)
-        imagebutton_r6c5.setOnClickListener(this)
-        imagebutton_r6c6.setOnClickListener(this)
-        //ROW 7
-        imagebutton_r7c0.setOnClickListener(this)
-        imagebutton_r7c1.setOnClickListener(this)
-        imagebutton_r7c2.setOnClickListener(this)
     }
 
     private fun assignCardImage() {
@@ -1519,10 +1454,74 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         image_r7c2.setImageResource(deckId[51])
     }
 
-    private fun delay(pair: Int) {
+    private fun setListeners(){
+
+        //ROW 0
+        imagebutton_r0c0.setOnClickListener(this)
+        imagebutton_r0c1.setOnClickListener(this)
+        imagebutton_r0c2.setOnClickListener(this)
+        imagebutton_r0c3.setOnClickListener(this)
+        imagebutton_r0c4.setOnClickListener(this)
+        imagebutton_r0c5.setOnClickListener(this)
+        imagebutton_r0c6.setOnClickListener(this)
+        //ROW 1
+        imagebutton_r1c0.setOnClickListener(this)
+        imagebutton_r1c1.setOnClickListener(this)
+        imagebutton_r1c2.setOnClickListener(this)
+        imagebutton_r1c3.setOnClickListener(this)
+        imagebutton_r1c4.setOnClickListener(this)
+        imagebutton_r1c5.setOnClickListener(this)
+        imagebutton_r1c6.setOnClickListener(this)
+        //ROW 2
+        imagebutton_r2c0.setOnClickListener(this)
+        imagebutton_r2c1.setOnClickListener(this)
+        imagebutton_r2c2.setOnClickListener(this)
+        imagebutton_r2c3.setOnClickListener(this)
+        imagebutton_r2c4.setOnClickListener(this)
+        imagebutton_r2c5.setOnClickListener(this)
+        imagebutton_r2c6.setOnClickListener(this)
+        //ROW 3
+        imagebutton_r3c0.setOnClickListener(this)
+        imagebutton_r3c1.setOnClickListener(this)
+        imagebutton_r3c2.setOnClickListener(this)
+        imagebutton_r3c3.setOnClickListener(this)
+        imagebutton_r3c4.setOnClickListener(this)
+        imagebutton_r3c5.setOnClickListener(this)
+        imagebutton_r3c6.setOnClickListener(this)
+        //ROW 4
+        imagebutton_r4c0.setOnClickListener(this)
+        imagebutton_r4c1.setOnClickListener(this)
+        imagebutton_r4c2.setOnClickListener(this)
+        imagebutton_r4c3.setOnClickListener(this)
+        imagebutton_r4c4.setOnClickListener(this)
+        imagebutton_r4c5.setOnClickListener(this)
+        imagebutton_r4c6.setOnClickListener(this)
+        //ROW 5
+        imagebutton_r5c0.setOnClickListener(this)
+        imagebutton_r5c1.setOnClickListener(this)
+        imagebutton_r5c2.setOnClickListener(this)
+        imagebutton_r5c3.setOnClickListener(this)
+        imagebutton_r5c4.setOnClickListener(this)
+        imagebutton_r5c5.setOnClickListener(this)
+        imagebutton_r5c6.setOnClickListener(this)
+        //ROW 6
+        imagebutton_r6c0.setOnClickListener(this)
+        imagebutton_r6c1.setOnClickListener(this)
+        imagebutton_r6c2.setOnClickListener(this)
+        imagebutton_r6c3.setOnClickListener(this)
+        imagebutton_r6c4.setOnClickListener(this)
+        imagebutton_r6c5.setOnClickListener(this)
+        imagebutton_r6c6.setOnClickListener(this)
+        //ROW 7
+        imagebutton_r7c0.setOnClickListener(this)
+        imagebutton_r7c1.setOnClickListener(this)
+        imagebutton_r7c2.setOnClickListener(this)
+    }
+
+    private fun delay(isPair: Boolean) {
         val handler = Handler()
-        when (pair) {
-            0 //Not Pair
+        when (isPair) {
+            false //Not Pair
             -> {
                 handler.postDelayed({
                     // Do this after delay (e.g. 2000 = 2 seconds)
@@ -1533,7 +1532,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }, 2000)
                 Toast.makeText(this, "Not Pair ", Toast.LENGTH_SHORT).show()
             }
-            1 //Pair
+            true //Pair
             -> {
                 handler.postDelayed({
                     // Do something after 5s = 5000ms
@@ -1549,7 +1548,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     if (pairCount == 26) {
                         //last pair picked succesfully, launch leaderboard activity
 
-                        soundBackground.stop()
+                        soundMusic.stop()
                         val intent = Intent(this@MainActivity, LeaderboardActivity::class.java)
                         intent.putExtra("EXTRA_attemptCount", attemptCount)
                         startActivity(intent)
@@ -1559,23 +1558,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }, 1500)
                 Toast.makeText(this, "Pair", Toast.LENGTH_SHORT).show()
             }
-//            else -> Log.d("MainActivity.delay()", "delay not work")
+
         }
     }
 
     private fun evaluatePair() {
-        Log.d("MainActivity() evaluatePair() ", " order[$pairX] order[$pairY] ")
 
-        //FIX error case: self pair
-
-        if (pairX == pairY) {
+        if (pairId1 == pairId2) {
+            //FIX error case: self pair
             Toast.makeText(this, "Can not pair a card with itself!", Toast.LENGTH_SHORT).show()
-            isPair = 0
-        } else if (deckOrder[pairX] == deckOrder[pairY]) {
-            isPair = 1 //IS PAIR
+            isPair = false
+        } else if (deckOrder[pairId1] == deckOrder[pairId2]) {
+            isPair = true
             soundCardSecondPair.start()
         } else {
-            isPair = 0 //NOT PAIR
+            isPair = false
             soundCardSecondNot.start()
         }
     }
