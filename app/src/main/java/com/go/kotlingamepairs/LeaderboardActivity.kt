@@ -43,21 +43,21 @@ class LeaderboardActivity : AppCompatActivity() {
 
         alert.setView(alertLayout)
 
-        val rating = alertLayout.findViewById<TextView>(R.id.text_dialog_rating)
-        val numberAttempts = alertLayout.findViewById<TextView>(R.id.text_dialog_attempts)
-        val inputName = alertLayout.findViewById<EditText>(R.id.edit_dialog_name)
+        val rating = alertLayout.findViewById<TextView>(R.id.dialog_leaderboard_inputscore_tv_rating)
+        val attempts = alertLayout.findViewById<TextView>(R.id.dialog_leaderboard_inputscore_tv_attempts)
+        val inputName = alertLayout.findViewById<EditText>(R.id.dialog_leaderboard_inputscore_et_name)
 
         rating.text = ratingVal
-        numberAttempts.text = String.format("%03d", attemptsVal)
+        attempts.text = String.format("%03d", attemptsVal)
 
         //CONFIG buttons
         alert.setCancelable(true)
         alert.setNegativeButton("NO") { _, _ ->
-            testSetPositionList(0)
+            setListPosition(0)
         }
         alert.setPositiveButton("SAVE") { _, _  ->
             nameCustom = inputName.text.toString()
-            testSetPositionList(0)
+            setListPosition(0)
         }
         val dialog = alert.create()
         dialog.show()
@@ -82,7 +82,7 @@ class LeaderboardActivity : AppCompatActivity() {
         finish()
     }
 
-    fun testSetPositionList(position: Int) {
+    fun setListPosition(position: Int) {
 
         val leaderboardListFragment = fragmentManager.findFragmentById(R.id.fragment_listview) as LeaderboardListFragment
         leaderboardListFragment.listView.smoothScrollToPositionFromTop(position, 0)

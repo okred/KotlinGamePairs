@@ -23,9 +23,9 @@ class CustomListAdapter(private val context: Activity, private val name: Array<S
             convertView = inflater.inflate(R.layout.listview_row_leaderboard, parent, false)
 
             viewHolder = ViewHolder()
-            viewHolder.tvAttempts = convertView!!.findViewById(R.id.text_listview_attempts) as TextView
-            viewHolder.tvName = convertView.findViewById(R.id.text_listview_name) as TextView
-            viewHolder.tvRating = convertView.findViewById(R.id.text_listview_rating) as TextView
+            viewHolder.tvAttempts = convertView!!.findViewById(R.id.listview_row_leaderboard_attempts) as TextView
+            viewHolder.tvName = convertView.findViewById(R.id.listview_row_leaderboard_name) as TextView
+            viewHolder.tvRating = convertView.findViewById(R.id.listview_row_leaderboard_rating) as TextView
 
             // store the holder with the view.
             convertView.tag = viewHolder

@@ -5,7 +5,7 @@
     android:background="@color/colorWhiteTrans">
 
     <TextView
-        android:id="@+id/text_dialog_rating"
+        android:id="@+id/dialog_leaderboard_inputscore_tv_rating"
         android:layout_width="24dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -15,25 +15,25 @@
         android:textColor="@color/colorWhite"
         android:textSize="20sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/text_dialog_attempts"
-        app:layout_constraintStart_toEndOf="@+id/text_dialog_attempts_title" />
+        app:layout_constraintBottom_toTopOf="@+id/dialog_leaderboard_inputscore_tv_attempts"
+        app:layout_constraintStart_toEndOf="@+id/dialog_leaderboard_inputscore_tv_attempts_title" />
 
     <TextView
-        android:id="@+id/text_dialog_attempts_title"
+        android:id="@+id/dialog_leaderboard_inputscore_tv_attempts_title"
         android:layout_width="wrap_content"
         android:layout_height="29dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/belgrano"
-        android:textColor="@color/colorWhite"
         android:text="@string/dialog_attempts"
+        android:textColor="@color/colorWhite"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/text_dialog_instruction_title"
-        app:layout_constraintTop_toBottomOf="@+id/text_dialog_rating_title" />
+        app:layout_constraintStart_toStartOf="@+id/dialog_leaderboard_inputscore_tv_instruction_title"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_leaderboard_inputscore_tv_rating_title" />
 
     <TextView
-        android:id="@+id/text_dialog_attempts"
+        android:id="@+id/dialog_leaderboard_inputscore_tv_attempts"
         android:layout_width="24dp"
         android:layout_height="29dp"
         android:layout_marginStart="8dp"
@@ -43,11 +43,11 @@
         android:text="@string/dialog_rating"
         android:textSize="20sp"
         android:textStyle="italic"
-        app:layout_constraintStart_toEndOf="@+id/text_dialog_attempts_title"
-        app:layout_constraintTop_toBottomOf="@+id/text_dialog_rating_title" />
+        app:layout_constraintStart_toEndOf="@+id/dialog_leaderboard_inputscore_tv_attempts_title"
+        app:layout_constraintTop_toBottomOf="@+id/dialog_leaderboard_inputscore_tv_rating_title" />
 
     <TextView
-        android:id="@+id/text_dialog_instruction_title"
+        android:id="@+id/dialog_leaderboard_inputscore_tv_instruction_title"
         android:layout_width="211dp"
         android:layout_height="22dp"
         android:layout_marginTop="16dp"
@@ -58,34 +58,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_dialog_attempts" />
+        app:layout_constraintTop_toBottomOf="@+id/dialog_leaderboard_inputscore_tv_attempts_title" />
 
     <EditText
-        android:id="@+id/edit_dialog_name"
+        android:id="@+id/dialog_leaderboard_inputscore_et_name"
         android:layout_width="201dp"
         android:layout_height="46dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/belgrano"
         android:inputType="text"
         android:hint="@string/enter_name"
+        android:textColor="@color/colorRed"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_dialog_instruction_title" />
+        app:layout_constraintTop_toBottomOf="@+id/dialog_leaderboard_inputscore_tv_instruction_title" />
 
     <TextView
-        android:id="@+id/text_dialog_rating_title"
+        android:id="@+id/dialog_leaderboard_inputscore_tv_rating_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/belgrano"
-        android:textColor="@color/colorWhite"
         android:text="@string/list_rating"
+        android:textColor="@color/colorWhite"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/text_dialog_instruction_title"
+        app:layout_constraintStart_toStartOf="@+id/dialog_leaderboard_inputscore_tv_instruction_title"
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
